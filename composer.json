@@ -1,0 +1,22 @@
+{
+    "name": "andrewzubets/laravel-extensions", 
+    "description": "Laravel & October library", 
+    "keywords": [], 
+    "type": "package",
+    "require": {
+     
+     },
+    "license": "MIT",
+    "authors": [{
+        "name": "Andrew Zubets", 
+        "email": "andrewzubets@gmail.com"
+    }],
+    "autoload": {
+        "psr-4": {
+            "Azub\\": "Azub/"
+        },
+        "files": ["src/helpers.php"]
+    },
+    "version": "1.0.0", 
+    "minimum-stability": "alpha"
+}
