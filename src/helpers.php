@@ -1,5 +1,15 @@
 <?php 
 
+/**
+ * Cuts text with specific max length from text
+ *
+ * Splits text by spaces then reassembles it with max length limit.
+ * 
+ * It may use html text as input. Returns unescaped text.
+ * 
+ * @param string $text
+ * @return string
+ */
 function az_small_description($text, $cnt = 260){
     $str = '';
     $content = strip_tags($text);
@@ -12,6 +22,13 @@ function az_small_description($text, $cnt = 260){
     }    
     return trim($str);
 }
+
+/**
+ * Transliterates russian text
+ * 
+ * @param string $text
+ * @return string
+ */
 function az_rus_translit($text){
     $cyr = [
         'а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п',
@@ -27,8 +44,14 @@ function az_rus_translit($text){
     ];
     return str_replace($cyr, $lat, $text);
 }
-function az_rus_to_alias($text_cyr){
-    $text = az_rus_translit($text_cyr);
+
+/**
+ * Creates url alias from title text
+ * 
+ * @param string $text_cyr
+ * @return string
+ */
+function az_make_alias($text){
     $text = strtolower($text);
     $text = str_replace([
         '!',        '@',        '#',        '$',
@@ -47,5 +70,17 @@ function az_rus_to_alias($text_cyr){
     if(substr($text, strlen($text) - 1) == '-') $text = substr($text,0, strlen($text) - 1);  
     return $text;
 }
+
+/**
+ * Creates url alias from russian title text
+ * 
+ * @param string $text
+ * @return string
+ */
+function az_rus_to_alias($text){
+    return az_make_alias(az_rus_translit($text));
+}
+
+
 
 ?>
