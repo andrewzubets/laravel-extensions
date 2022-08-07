@@ -82,5 +82,5 @@ function az_rus_to_alias($text){
 }
 
 
-
+include __DIR__.'/helpers/routes.php';
 ?>
