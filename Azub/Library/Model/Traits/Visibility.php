@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-namespace Azub\Model\Traits;
+namespace Azub\Library\Model\Traits;
 
 trait Visibility {
 

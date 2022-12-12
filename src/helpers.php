@@ -1,12 +1,12 @@
-<?php 
+<?php
 
 /**
  * Cuts text with specific max length from text
  *
  * Splits text by spaces then reassembles it with max length limit.
- * 
+ *
  * It may use html text as input. Returns unescaped text.
- * 
+ *
  * @param string $text
  * @return string
  */
@@ -18,14 +18,14 @@ function az_small_description($text, $cnt = 260){
     foreach ($ex as $word) {
         $a = mb_strlen($str) + mb_strlen($word) + 1;
         if($a > $cnt) break;
-        $str.=$word.' ';        
-    }    
+        $str.=$word.' ';
+    }
     return trim($str);
 }
 
 /**
  * Transliterates russian text
- * 
+ *
  * @param string $text
  * @return string
  */
@@ -47,7 +47,7 @@ function az_rus_translit($text){
 
 /**
  * Creates url alias from title text
- * 
+ *
  * @param string $text_cyr
  * @return string
  */
@@ -58,22 +58,22 @@ function az_make_alias($text){
         '%',        '^',        '_',        '–',
         '«',        '»',        ':',        ';',
         '"',        '\'',       '.',        ',',
-        '?',        '=',        '~',        '&', 
-        '*',        '(',        ')',        '_', 
-        '+',        '[',        ']',        '{', 
-        '}',        '|',        '\\',       '/', 
-        '<',        '>',        '№',                
+        '?',        '=',        '~',        '&',
+        '*',        '(',        ')',        '_',
+        '+',        '[',        ']',        '{',
+        '}',        '|',        '\\',       '/',
+        '<',        '>',        '№',
     ], '-', $text);
-    $text = preg_replace_callback('/\s+/m', function($m){ return '-'; }, $text);    
-    $text = preg_replace_callback('/\-\-+/m', function($m){ return '-'; }, $text);    
+    $text = preg_replace_callback('/\s+/m', function($m){ return '-'; }, $text);
+    $text = preg_replace_callback('/\-\-+/m', function($m){ return '-'; }, $text);
     if(substr($text, 0, 1) == '-') $text = substr($text, 1);
-    if(substr($text, strlen($text) - 1) == '-') $text = substr($text,0, strlen($text) - 1);  
+    if(substr($text, strlen($text) - 1) == '-') $text = substr($text,0, strlen($text) - 1);
     return $text;
 }
 
 /**
  * Creates url alias from russian title text
- * 
+ *
  * @param string $text
  * @return string
  */
@@ -83,4 +83,3 @@ function az_rus_to_alias($text){
 
 
 include __DIR__.'/helpers/routes.php';
-?>
